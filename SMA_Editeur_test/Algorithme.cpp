@@ -33,7 +33,6 @@ void Editeur::cartographier()
 
         if(BR.x() - TL.x() == 1)
         {
-            //qreal varX = (TL.x() == 49) ? TL.x() : BR.x() ;
             // porte verticale
             for( qreal var = TL.y(); var < BR.y(); ++var )
             {
@@ -43,7 +42,6 @@ void Editeur::cartographier()
         }
         else
         {
-            //qreal varY = (TL.y() == 49) ? TL.y() : BR.y();
             // porte horizontale
             for( qreal var = TL.x(); var < BR.x(); ++var )
             {
@@ -134,7 +132,7 @@ void Editeur::cartographier()
         //std::cout << "Niveau : " << niveau << std::endl;
     }
 
-    afficher_grille();
+    sauver_grille();
 }
 
 bool Editeur::verifier_traitement(const QList<QGraphicsItem*>& liste_item, const QPointF & point)
@@ -158,7 +156,7 @@ bool Editeur::verifier_traitement(const QList<QGraphicsItem*>& liste_item, const
     return retour;
 }
 
-void Editeur::afficher_grille()
+void Editeur::sauver_grille()
 {
     QFile file("./Carte_Niveau.txt");
 
@@ -171,6 +169,26 @@ void Editeur::afficher_grille()
     QTextStream flux(&file);
 
     flux.setCodec("UTF-8");
+
+    // Dimensions de la pièce (murs compris)
+    flux << "WIDTH " << width_ + 2 <<"\nHEIGHT " << height_ + 2 << "\n\n" ;
+
+    QList<QGraphicsItem *> liste_item = scene_->items();
+
+    //On enlève la salle et les portes
+    for (int i = 0 ; i < 3 ; ++i)
+        liste_item.pop_front();
+
+    // Enregistrement de tous les objets
+    for( int i = 0 ; i < liste_item.size() ; ++i )
+    {
+        flux << "ITEM " << i << "\nTL " << liste_item[ i ]->boundingRect().topLeft().x()
+             << " " << liste_item[ i ]->boundingRect().topLeft().y() ;
+        flux << "\nBR " << liste_item[ i ]->boundingRect().bottomRight().x()
+             << " " << liste_item[ i ]->boundingRect().bottomRight().y() << "\n\n";
+    }
+
+    flux << "DATA\n" ;
 
     int compteur = 0 ;
     foreach( Pixel p, grille_ )

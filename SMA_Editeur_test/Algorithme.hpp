@@ -26,7 +26,7 @@ protected :
 
 private :
     bool verifier_traitement(const QList<QGraphicsItem*>&, const QPointF &);
-    void afficher_grille();
+    void sauver_grille();
 
     const QGraphicsScene * scene_;
     std::vector<Pixel> grille_;
