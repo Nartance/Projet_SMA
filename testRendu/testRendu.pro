@@ -2,8 +2,13 @@ QT += widgets
 
 SOURCES += \
     main.cpp \
-    Normal.cpp
+    Normal.cpp \
+    Mur.cpp \
+    General.cpp \
+    Personnage.cpp
 
 HEADERS += \
     Normal.hpp \
-    main.hpp
+    Mur.hpp \
+    General.hpp \
+    Personnage.hpp
