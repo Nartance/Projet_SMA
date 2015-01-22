@@ -39,6 +39,7 @@ int main(int argc, char ** argv)
     normal->setPos(change_repere(QPoint(340,200)));
     scene.addItem(normal);
 
+    /*
     Normal * normal0 = new Normal(0);
     normal0->setPos(change_repere(QPoint(60,200)));
     scene.addItem(normal0);
@@ -58,6 +59,25 @@ int main(int argc, char ** argv)
     Normal * normal4 = new Normal(75);
     normal4->setPos(change_repere(QPoint(340,15)));
     scene.addItem(normal4);
+    */
+
+    // Création d'une cible
+
+    Cible * cible = new Cible(90);
+    cible->setPos(change_repere(QPoint(210,235)));
+    scene.addItem(cible);
+
+    // Création d'un surveillant
+
+    Surveillant * surveillant = new Surveillant(180);
+    surveillant->setPos(change_repere(QPoint(150,75)));
+    scene.addItem(surveillant);
+
+    // Création d'un assassin
+
+    Assassin * assassin = new Assassin(270);
+    assassin->setPos(change_repere(QPoint(375,375)));
+    scene.addItem(assassin);
 
     // Appel de la vue
 

@@ -1,12 +1,12 @@
-#ifndef NORMAL_HPP
-#define NORMAL_HPP
+#ifndef CIBLE_HPP
+#define CIBLE_HPP
 
 #include "Personnage.hpp"
 
-class Normal : public Personnage
+class Cible : public Personnage
 {
     public :
-        Normal(const int &, bool affichage = false);
+        Cible(const int &, bool affichage = false);
         void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
         void type();
 
@@ -16,4 +16,5 @@ class Normal : public Personnage
         bool affichage_;
 };
 
-#endif // NORMAL_HPP
+#endif // CIBLE_HPP
+
