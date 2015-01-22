@@ -15,3 +15,14 @@ void Normal::type()
 {
     std::cout << "Normal" << std::endl;
 }
+
+void Normal::action(const QList<QGraphicsItem *> & liste_item)
+{
+
+}
+
+void Normal::move(const qreal & angle, const qreal & vitesse)
+{
+    setRotation(angle);
+    setPos(mapToParent(vitesse,0));
+}

@@ -27,7 +27,6 @@ void Personnage::paint(QPainter * painter, const QStyleOptionGraphicsItem *, QWi
     painter->setPen(QPen(QColor(0,0,0)));
 
     // Corps
-    painter->setBrush(QBrush(QColor(220,220,220)));
     painter->drawEllipse(-7.5,-7.5,15,15);
 
     // Regard
@@ -131,28 +130,37 @@ void Personnage::advance(int phase)
     }
     else
     {
-        // trop hétérogène !!!
-        if(limite_ == -1)
+        action(liste_item);
+    }
+
+    move(angle_, vitesse);
+}
+
+void Personnage::action(const QList<QGraphicsItem *> &)
+{
+    if(limite_ == -1)
+    {
+        angle_modifie_ = qrand() % 10 - 5;
+        limite_ = qrand() % 50;
+    }
+    else
+    {
+        if(compteur_ < limite_)
         {
-            angle_modifie_ = qrand() % 10 - 5;
-            limite_ = qrand() % 50;
+            angle_ += angle_modifie_;
+            ++compteur_;
         }
         else
         {
-            if(compteur_ < limite_)
-            {
-                angle_ += angle_modifie_;
-                ++compteur_;
-            }
-            else
-            {
-                compteur_ = -1;
-                limite_ = -1;
-            }
+            compteur_ = -1;
+            limite_ = -1;
         }
     }
+}
 
-    setRotation(angle_);
+void Personnage::move(const qreal & angle, const qreal & vitesse)
+{
+    setRotation(angle);
     setPos(mapToParent(vitesse,0));
 }
 

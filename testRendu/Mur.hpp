@@ -1,7 +1,7 @@
 #ifndef MUR_HPP
 #define MUR_HPP
 
-#include "General.hpp"
+#include "Include.hpp"
 
 class Mur : public QGraphicsItem
 {

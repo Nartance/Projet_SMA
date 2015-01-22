@@ -11,6 +11,8 @@ class Normal : public Personnage
         void type();
 
     protected:
+        void action(const QList<QGraphicsItem *> &);
+        void move(const qreal &, const qreal &);
 
     private :
         bool affichage_;

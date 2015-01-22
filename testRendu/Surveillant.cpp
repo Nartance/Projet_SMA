@@ -16,4 +16,15 @@ void Surveillant::type()
     std::cout << "Surveillant" << std::endl;
 }
 
+void Surveillant::action(const QList<QGraphicsItem *> & liste_item)
+{
+
+}
+
+void Surveillant::move(const qreal & angle, const qreal & vitesse)
+{
+    setRotation(angle);
+    setPos(mapToParent(vitesse,0));
+}
+
 

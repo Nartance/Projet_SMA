@@ -33,10 +33,28 @@ int main(int argc, char ** argv)
     Mur * mur_haut = new Mur(3);
     scene.addItem(mur_haut);
 
+    // Création d'une cible
+
+    Cible * cible = new Cible(90, true);
+    cible->setPos(change_repere(QPoint(350,200)));
+    scene.addItem(cible);
+
+    // Création d'un surveillant
+
+    Surveillant * surveillant = new Surveillant(180);
+    surveillant->setPos(change_repere(QPoint(150,75)));
+    scene.addItem(surveillant);
+
+    // Création d'un assassin
+
+    Assassin * assassin = new Assassin(270, true);
+    assassin->setPos(change_repere(QPoint(200,200)));
+    scene.addItem(assassin);
+
     // Création d'un normal
 
-    Normal * normal = new Normal(0, true);
-    normal->setPos(change_repere(QPoint(340,200)));
+    Normal * normal = new Normal(0);
+    normal->setPos(change_repere(QPoint(180,200)));
     scene.addItem(normal);
 
     /*
@@ -60,24 +78,6 @@ int main(int argc, char ** argv)
     normal4->setPos(change_repere(QPoint(340,15)));
     scene.addItem(normal4);
     */
-
-    // Création d'une cible
-
-    Cible * cible = new Cible(90);
-    cible->setPos(change_repere(QPoint(210,235)));
-    scene.addItem(cible);
-
-    // Création d'un surveillant
-
-    Surveillant * surveillant = new Surveillant(180);
-    surveillant->setPos(change_repere(QPoint(150,75)));
-    scene.addItem(surveillant);
-
-    // Création d'un assassin
-
-    Assassin * assassin = new Assassin(270);
-    assassin->setPos(change_repere(QPoint(375,375)));
-    scene.addItem(assassin);
 
     // Appel de la vue
 

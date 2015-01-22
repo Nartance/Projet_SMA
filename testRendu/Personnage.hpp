@@ -1,21 +1,23 @@
 #ifndef PERSONNAGE_HPP
 #define PERSONNAGE_HPP
 
-#include "General.hpp"
+#include <iostream>
+#include "Include.hpp"
 
 class Personnage : public QGraphicsItem
 {
     public:
         Personnage(const int & angle = 0);
-        ~Personnage() = 0;
 
         QRectF boundingRect() const;
         QPainterPath shape() const;
         void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
-        void type();
+        virtual void type() = 0;
 
     protected:
         void advance(int);
+        virtual void action(const QList<QGraphicsItem *> &);
+        virtual void move(const qreal &, const qreal &);
 
         QPointF deplacement_angle() const;
         QPointF regard() const;
