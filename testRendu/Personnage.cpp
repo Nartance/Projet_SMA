@@ -4,7 +4,7 @@ QPointF direction[3] = { QPointF(5.3,-5.3), QPointF(0,0), QPointF(5.3,5.3) };
 
 Personnage::Personnage(const int & angleT) : angle_(angleT), vitesse_(1), compteur_(-1), limite_(-1)
 {
-
+    vitesse_deplacement_ = vitesse_;
 }
 
 // Forme englobante
@@ -133,7 +133,7 @@ void Personnage::advance(int phase)
         action(liste_item);
     }
 
-    move(angle_, vitesse);
+    move();
 }
 
 void Personnage::action(const QList<QGraphicsItem *> &)
@@ -158,10 +158,10 @@ void Personnage::action(const QList<QGraphicsItem *> &)
     }
 }
 
-void Personnage::move(const qreal & angle, const qreal & vitesse)
+void Personnage::move()
 {
-    setRotation(angle);
-    setPos(mapToParent(vitesse,0));
+    setRotation(angle_);
+    setPos(mapToParent(vitesse_deplacement_,0));
 }
 
 QPointF Personnage::deplacement_angle() const

@@ -12,7 +12,7 @@ class Surveillant : public Personnage
 
     protected:
         void action(const QList<QGraphicsItem *> &);
-        void move(const qreal &, const qreal &);
+        void move();
 
     private :
         bool affichage_;

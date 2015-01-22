@@ -21,10 +21,10 @@ void Surveillant::action(const QList<QGraphicsItem *> & liste_item)
 
 }
 
-void Surveillant::move(const qreal & angle, const qreal & vitesse)
+void Surveillant::move()
 {
-    setRotation(angle);
-    setPos(mapToParent(vitesse,0));
+    setRotation(angle_);
+    setPos(mapToParent(vitesse_deplacement_,0));
 }
 
 

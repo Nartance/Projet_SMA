@@ -20,8 +20,8 @@ void Assassin::type()
 void Assassin::action(const QList<QGraphicsItem *> & liste_item)
 {
     // Modifier en 6 avec l'arrivée des murs avec porte
-    QGraphicsItem * item = liste_item[liste_item.size() - 4];
-    angle_ = normalise_angle(360 - QLineF(this->pos(), item->pos()).angle());
+    QGraphicsItem * cible = liste_item[liste_item.size() - 4];
+    angle_ = normalise_angle(360 - QLineF(this->pos(), cible->pos()).angle());
 
     if(visee_ == NULL)
     {
@@ -29,20 +29,15 @@ void Assassin::action(const QList<QGraphicsItem *> & liste_item)
         visee_->start();
     }
 
-    // 5000 en realite
     if(visee_->elapsed() > 5000)
     {
-        ((Cible *) item)->mort();
+        ((Cible *) cible)->mort();
         origine_tir_ = this->pos();
-    }
-    else
-    {
-        std::cout << visee_->elapsed() << std::endl;
     }
 }
 
-void Assassin::move(const qreal & angle, const qreal & vitesse)
+void Assassin::move()
 {
-    setRotation(angle);
+    setRotation(angle_);
     setPos(mapToParent(0,0));
 }

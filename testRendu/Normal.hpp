@@ -1,6 +1,7 @@
 #ifndef NORMAL_HPP
 #define NORMAL_HPP
 
+#include "General.hpp"
 #include "Personnage.hpp"
 
 class Normal : public Personnage
@@ -12,10 +13,12 @@ class Normal : public Personnage
 
     protected:
         void action(const QList<QGraphicsItem *> &);
-        void move(const qreal &, const qreal &);
+        void move();
 
     private :
         bool affichage_;
+
+        QTime * pause_;
 };
 
 #endif // NORMAL_HPP

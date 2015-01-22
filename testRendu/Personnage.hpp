@@ -17,13 +17,14 @@ class Personnage : public QGraphicsItem
     protected:
         void advance(int);
         virtual void action(const QList<QGraphicsItem *> &);
-        virtual void move(const qreal &, const qreal &);
+        virtual void move();
 
         QPointF deplacement_angle() const;
         QPointF regard() const;
 
         qreal angle_;
         qreal vitesse_;
+        qreal vitesse_deplacement_;
 
         qreal angle_modifie_;
         qreal compteur_;

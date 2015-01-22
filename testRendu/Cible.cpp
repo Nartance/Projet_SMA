@@ -41,12 +41,12 @@ void Cible::action(const QList<QGraphicsItem *> & liste_item)
     Personnage::action(liste_item);
 }
 
-void Cible::move(const qreal & angle, const qreal & vitesse)
+void Cible::move()
 {
     if(!mort_)
     {
-        setRotation(angle);
-        setPos(mapToParent(vitesse,0));
+        setRotation(angle_);
+        setPos(mapToParent(vitesse_deplacement_,0));
     }
 }
 
