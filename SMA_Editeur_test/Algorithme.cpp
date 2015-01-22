@@ -129,7 +129,6 @@ void Editeur::cartographier()
         a_traiter.clear();
 
         ++niveau;
-        //std::cout << "Niveau : " << niveau << std::endl;
     }
 
     sauver_grille();
@@ -181,12 +180,8 @@ void Editeur::sauver_grille()
 
     // Enregistrement de tous les objets
     for( int i = 0 ; i < liste_item.size() ; ++i )
-    {
-        flux << "ITEM " << i << "\nTL " << liste_item[ i ]->boundingRect().topLeft().x()
-             << " " << liste_item[ i ]->boundingRect().topLeft().y() ;
-        flux << "\nBR " << liste_item[ i ]->boundingRect().bottomRight().x()
-             << " " << liste_item[ i ]->boundingRect().bottomRight().y() << "\n\n";
-    }
+        flux << liste_item[ i ] ;
+
 
     flux << "DATA\n" ;
 

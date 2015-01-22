@@ -6,6 +6,7 @@
 #include <vector>
 #include <queue>
 #include <time.h>
+#include <iostream>
 
 #include <QApplication>
 #include <QGraphicsItem>
@@ -19,7 +20,7 @@
 #include "Porte.hpp"
 
 QPointF reverseCoord(const QPointF &);
-void ajouterTL(std::priority_queue<qreal> &, const QPointF&, const QPointF&, const qreal&);
+void ajouterTL(std::priority_queue<qreal, std::vector<qreal>, std::greater<qreal> > &, const QPointF&, const QPointF&, const qreal&);
 void construire1mur(QGraphicsScene *, const int&,
                     const QPointF&,
                     const QPointF&,
@@ -29,6 +30,7 @@ void construire1mur(QGraphicsScene *, const int&,
                     const QPointF&);
 void creer_limites(QGraphicsScene *);
 void creer_murs(QGraphicsScene *, const QPointF&, const QPointF&);
+QTextStream& operator<<( QTextStream& o, const QGraphicsItem * pQGI);
 
 
 

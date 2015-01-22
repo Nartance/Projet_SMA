@@ -36,7 +36,7 @@ QPointF reverseCoord( const QPointF & p)
     return QPointF( p.y(), p.x() );
 }
 
-void ajouterTL(std::priority_queue<qreal> & pq, const QPointF& TL_1, const QPointF& TL_2, const qreal& testCoord)
+void ajouterTL(std::priority_queue<qreal, std::vector<qreal>, std::greater<qreal> > & pq, const QPointF& TL_1, const QPointF& TL_2, const qreal& testCoord)
 {
     if(TL_1.x() == testCoord)
         pq.push(TL_1.y());
@@ -85,6 +85,9 @@ void creer_limites(QGraphicsScene * scene)
     scene->addItem(porte_1);
     porte_1->positionnerPorte();
 
+    qreal p1x = porte_1->boundingRect().topLeft().x();
+    qreal p1y = porte_1->boundingRect().topLeft().y();
+
     bool sempiete;
 
     do{
@@ -93,8 +96,11 @@ void creer_limites(QGraphicsScene * scene)
         scene->addItem(porte_2);
         porte_2->positionnerPorte();
 
-        if(abs(porte_1->boundingRect().topLeft().x() - porte_2->boundingRect().topLeft().x()) < 40
-               || abs(porte_1->boundingRect().topLeft().y() - porte_2->boundingRect().topLeft().y()) < 40 )
+        qreal p2x = porte_2->boundingRect().topLeft().x();
+        qreal p2y = porte_2->boundingRect().topLeft().y();
+
+        if((p1y == p2y && abs(p1x - p2x) < 40)
+               || (p1x == p2x && abs(p1y - p2x) < 40 ))
         {
             delete porte_2;
             sempiete = true;
@@ -125,7 +131,7 @@ void creer_murs(QGraphicsScene * scene, const QPointF& TL_1, const QPointF& TL_2
 
     for( int i = 0; i < 4; ++i )
     {
-        std::priority_queue<qreal> coordonnees;
+        std::priority_queue<qreal, std::vector<qreal>, std::greater<qreal> > coordonnees;
 
         switch(i)
         {
@@ -220,4 +226,15 @@ void creer_murs(QGraphicsScene * scene, const QPointF& TL_1, const QPointF& TL_2
         construire1mur(scene, nbPorte, depart, arrivee, inter_1_1, inter_1_2, inter_2_1, inter_2_2);
 
     }
+}
+
+QTextStream& operator<<( QTextStream& o, const QGraphicsItem * pQGI)
+{
+     QString s = typeid(*pQGI).name();
+     s = s.toUpper();
+     s = s.remove(0, 6);
+     o << s << "\nTL " << pQGI->boundingRect().topLeft().x() << " " << pQGI->boundingRect().topLeft().y()
+      <<"\nBR " <<  pQGI->boundingRect().bottomRight().x() << " " <<  pQGI->boundingRect().bottomRight().y() << "\n\n";
+
+    return o;
 }
