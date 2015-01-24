@@ -17,6 +17,11 @@ class Normal : public Personnage
 
     private :
         bool affichage_;
+        bool panique_;
+
+        // Gestion du choc
+        qreal temps_;
+        qreal angle_arret_;
 
         QTime * pause_;
 };

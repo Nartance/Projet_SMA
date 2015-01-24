@@ -20,7 +20,7 @@ void Assassin::type()
 void Assassin::action(const QList<QGraphicsItem *> & liste_item)
 {
     // Modifier en 6 avec l'arrivée des murs avec porte
-    QGraphicsItem * cible = liste_item[liste_item.size() - 4];
+    QGraphicsItem * cible = liste_item[liste_item.size() - 7];
     angle_ = normalise_angle(360 - QLineF(this->pos(), cible->pos()).angle());
 
     if(visee_ == NULL)

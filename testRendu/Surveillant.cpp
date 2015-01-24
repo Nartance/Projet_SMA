@@ -23,8 +23,8 @@ void Surveillant::action(const QList<QGraphicsItem *> & liste_item)
 
 void Surveillant::move()
 {
-    setRotation(angle_);
-    setPos(mapToParent(vitesse_deplacement_,0));
+    /*setRotation(angle_);
+    setPos(mapToParent(vitesse_deplacement_,0));*/
 }
 
 

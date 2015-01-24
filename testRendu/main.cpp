@@ -53,31 +53,21 @@ int main(int argc, char ** argv)
 
     // Création d'un normal
 
-    Normal * normal = new Normal(0);
-    normal->setPos(change_repere(QPoint(180,200)));
-    scene.addItem(normal);
-
-    /*
     Normal * normal0 = new Normal(0);
     normal0->setPos(change_repere(QPoint(60,200)));
     scene.addItem(normal0);
 
     Normal * normal1 = new Normal(143);
-    normal1->setPos(change_repere(QPoint(120,120)));
+    normal1->setPos(change_repere(QPoint(20,340)));
     scene.addItem(normal1);
 
-    Normal * normal2 = new Normal(300);
-    normal2->setPos(change_repere(QPoint(180,180)));
+    Normal * normal2 = new Normal(20);
+    normal2->setPos(change_repere(QPoint(150,280)));
     scene.addItem(normal2);
 
     Normal * normal3 = new Normal(256);
-    normal3->setPos(change_repere(QPoint(240,240)));
+    normal3->setPos(change_repere(QPoint(340,15)));
     scene.addItem(normal3);
-
-    Normal * normal4 = new Normal(75);
-    normal4->setPos(change_repere(QPoint(340,15)));
-    scene.addItem(normal4);
-    */
 
     // Appel de la vue
 

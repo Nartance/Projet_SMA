@@ -6,8 +6,8 @@ SOURCES += \
     Mur.cpp \
     General.cpp \
     Personnage.cpp \
-    Assassin.cpp \
     Cible.cpp \
+    Assassin.cpp \
     Surveillant.cpp
 
 HEADERS += \
@@ -15,6 +15,7 @@ HEADERS += \
     Mur.hpp \
     General.hpp \
     Personnage.hpp \
-    Assassin.hpp \
+    Include.hpp \
     Cible.hpp \
+    Assassin.hpp \
     Surveillant.hpp

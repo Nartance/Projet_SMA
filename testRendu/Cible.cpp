@@ -36,7 +36,7 @@ void Cible::action(const QList<QGraphicsItem *> & liste_item)
 {
     //Mouvement circulaire de test - position initiale : (350,200) angle = 90
     /*++angle_;
-    vitesse = 2.5;*/
+    vitesse_ = 2.5;*/
 
     Personnage::action(liste_item);
 }
